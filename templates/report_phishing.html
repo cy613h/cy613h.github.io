@@ -1,0 +1,132 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}cy613h | Report Phishing{% endblock %}
+
+{% block content %}
+<style>
+.terminal-screen {
+    background: #0d1117;
+    border: 1px solid #30363d;
+    border-radius: 8px;
+    padding: 1.5rem;
+    font-family: 'JetBrains Mono', monospace;
+    max-width: 700px;
+    margin: 2rem auto;
+}
+.terminal-line {
+    margin: 0.3rem 0;
+    color: #8b949e;
+}
+.terminal-line .prompt {
+    color: #00ff88;
+}
+.terminal-line .success {
+    color: #00ff88;
+}
+.terminal-line .warning {
+    color: #f0883a;
+}
+.terminal-content {
+    display: none;
+}
+.phishing-tips {
+    display: none;
+    margin-top: 2rem;
+}
+.tip-card {
+    background: #161b22;
+    border: 1px solid #30363d;
+    border-radius: 8px;
+    padding: 1rem 1.5rem;
+    margin: 1rem 0;
+}
+.tip-card h3 {
+    color: #00ff88;
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+}
+.tip-card p {
+    color: #c9d1d9;
+    font-size: 0.9rem;
+    margin: 0;
+}
+</style>
+
+<section class="about-content">
+    <div class="container">
+        <div class="terminal-screen" id="terminal">
+            <div class="terminal-line"><span class="prompt">$</span> initializing phishing-report.sh...</div>
+            <div class="terminal-line"><span class="prompt">$</span>加载安全协议...</div>
+            <div class="terminal-line"><span class="prompt">$</span>connecting to threat-intel database...</div>
+            <div class="terminal-line"><span class="prompt">$</span>analyzing patterns...</div>
+            <div class="terminal-line"><span class="prompt">$</span>✓ Analysis complete!</div>
+            <div class="terminal-line"><span class="prompt">$</span><br></div>
+            <div class="terminal-line warning">⚠ Phishing attempts detected globally:</div>
+            <div class="terminal-line">   • 450,000+ phishing sites created daily</div>
+            <div class="terminal-line">   • $17,700 lost every minute to phishing</div>
+            <div class="terminal-line">   • 83% of organizations experienced phishing attacks</div>
+            <div class="terminal-line"><span class="prompt">$</span><br></div>
+            <div class="terminal-line success">✓ Loading...</div>
+        </div>
+
+        <div class="phishing-tips" id="tips">
+            <h2 style="color:#fff;font-size:1.5rem;margin:2rem 0 1rem;text-align:center">🛡 Best Practices to Avoid Phishing</h2>
+            
+            <div class="tip-card">
+                <h3>1. Verify the Sender</h3>
+                <p>Check the email address carefully. Attackers often use domains that look similar (e.g., support@amaz0n.com instead of amazon.com).</p>
+            </div>
+
+            <div class="tip-card">
+                <h3>2. Don't Click Unknown Links</h3>
+                <p>Hover over links before clicking to see the actual URL. If it looks suspicious or different from what's displayed, don't click it.</p>
+            </div>
+
+            <div class="tip-card">
+                <h3>3. Look for HTTPS</h3>
+                <p>Legitimate sites use HTTPS. However, phishing sites can also use HTTPS, so this alone isn't enough to verify legitimacy.</p>
+            </div>
+
+            <div class="tip-card">
+                <h3>4. Be Wary of Urgency</h3>
+                <p>Phishing emails often create urgency ("Your account will be closed!"). Take time to verify before acting.</p>
+            </div>
+
+            <div class="tip-card">
+                <h3>5. Don't Download Attachments</h3>
+                <p>Unexpected attachments, especially .exe, .zip, or Office documents, can contain malware.</p>
+            </div>
+
+            <div class="tip-card">
+                <h3>6. Use 2-Factor Authentication</h3>
+                <p>Enable 2FA on all important accounts. Even if your credentials are compromised, attackers won't be able to access your account.</p>
+            </div>
+
+            <div class="tip-card">
+                <h3>7. Report Suspicious Emails</h3>
+                <p>Report phishing attempts to your email provider and the organization being impersonated.</p>
+            </div>
+
+            <div style="text-align:center;margin-top:2rem">
+                <a href="{% url 'blog:contact' %}" class="btn btn-primary">Report a Phishing Attempt</a>
+                <a href="{% url 'blog:home' %}" class="btn btn-secondary" style="margin-left:1rem">← Back Home</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const terminal = document.getElementById('terminal');
+    const tips = document.getElementById('tips');
+    
+    // Show tips after terminal animation
+    setTimeout(function() {
+        terminal.style.display = 'none';
+        tips.style.display = 'block';
+        tips.classList.add('fade-in');
+    }, 3000);
+});
+</script>
+{% endblock %}

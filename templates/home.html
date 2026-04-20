@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load markdown_extras %}
+
+{% block title %}cy613h | Home{% endblock %}
+
+{% block content %}
+<section class="hero">
+    <div class="hero-content">
+        <div style="animation:float 3s ease-in-out infinite">
+            <img src="{% static 'img/profile.jpg' %}" alt="cy613h" class="profile-img">
+        </div>
+        <h1>cy613h</h1>
+        <p class="hero-tagline">BlueTeamer by Day, RedTeamer by night...<br>
+            <span style="color:#0f8">#</span><a href="{% url 'blog:social' %}" style="color:#fff;text-decoration:none"></a>&nbsp;
+            <a href="{% url 'blog:report_phishing' %}" style="color:#0f8;text-decoration:none;font-family:monospace">Click here to report phishing ;)</a></p>
+        <div class="cta-buttons">
+            <a href="{% url 'blog:social' %}" class="btn btn-primary">dig "cy613h"</a>
+            <a href="{% url 'blog:about' %}" class="btn btn-secondary">whoami</a>
+        </div>
+        
+        <div style="position:relative;z-index:1;width:100%;max-width:900px;margin:40px auto 0;padding:20px">
+            <h2 class="section-header">Recent Posts</h2>
+            <div class="posts-grid">
+                {% for post in posts %}
+                <a href="{{ post.get_absolute_url }}" style="text-decoration:none">
+                    <div class="post-card" style="background:#0d1117;border:1px solid #1e2a3a;border-radius:12px;padding:20px;display:flex;gap:20px;align-items:flex-start;transition:all .3s" onmouseover='this.style.borderColor="#667eea"' onmouseout='this.style.borderColor="#1e2a3a"'>
+                        {% if post.image %}
+                        <img src="{{ post.image.url }}" style="width:150px;height:150px;object-fit:cover;border-radius:8px;flex-shrink:0;background:#1e2a3a">
+                        {% else %}
+                        <img src="https://api.dicebear.com/7.x/identicon/svg?seed={{ post.slug }}" style="width:150px;height:150px;object-fit:cover;border-radius:8px;flex-shrink:0;background:#1e2a3a">
+                        {% endif %}
+                        <div>
+                            <h3 style="color:#fff;margin:0 0 6px;font-size:1.05rem;text-align:left">{{ post.title }}</h3>
+                            <p style="color:#8892a4;font-size:.82rem;margin:0 0 10px;text-align:left">{{ post.content|markdownify|striptags|truncatechars:120 }}</p>
+                            <div style="display:flex;align-items:center;gap:12px;font-size:.78rem;color:#6b7280">
+                                <span>📅 {{ post.created_at|date:"March d, Y" }}</span>
+                            </div>
+                            {% if post.tags.all %}
+                            <div style="margin-top:10px;display:flex;gap:8px;flex-wrap:wrap">
+                                {% for tag in post.tags.all|slice:":3" %}
+                                <span style="padding:3px 10px;background:#1e2a3a;color:#667eea;border-radius:4px;font-size:.75rem;font-family:monospace">{{ tag.name }}</span>
+                                {% endfor %}
+                            </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </a>
+                {% empty %}
+                <div style="text-align:center;padding:3rem;color:#8b949e">
+                    <p>No posts yet.</p>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

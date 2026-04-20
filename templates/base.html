@@ -1,0 +1,40 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}cy613h{% endblock %}</title>
+    <meta name="description" content="cy613h - Security Researcher & Bug Bounty Hunter">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <canvas id="terminal-canvas"></canvas>
+    
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="{% url 'blog:home' %}" class="logo">cy613h</a>
+            <ul class="nav-links">
+                <li><a href="{% url 'blog:home' %}">Home</a></li>
+                <li><a href="{% url 'blog:blog_list' %}">Blog</a></li>
+                <li><a href="{% url 'blog:about' %}">About</a></li>
+                <li><a href="{% url 'blog:social' %}">Social</a></li>
+                <li><a href="{% url 'blog:contact' %}">Contact</a></li>
+            </ul>
+            <button class="mobile-menu-btn">☰</button>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer>
+        <p>Copyright © 2026 • Powered by <a href="https://github.com/cy613h" target="_blank">cy613h</a></p>
+    </footer>
+
+    <script src="{% static 'js/main.js' %}"></script>
+    {% block extra_js %}{% endblock %}
+</body>
+</html>

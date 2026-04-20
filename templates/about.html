@@ -1,0 +1,217 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}cy613h | About{% endblock %}
+
+{% block content %}
+<style>
+.about-wrapper {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 3rem 1rem;
+}
+.about-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+.about-header h1 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 3rem;
+    color: #fff;
+    margin-bottom: 0.5rem;
+    text-shadow: 0 0 30px rgba(102, 126, 234, 0.5);
+}
+.about-header p {
+    color: #667eea;
+    font-size: 1.1rem;
+}
+.profile-card {
+    background: linear-gradient(135deg, #161b22 0%, #0d1117 100%);
+    border: 1px solid #30363d;
+    border-radius: 16px;
+    padding: 2rem;
+    margin: 2rem 0;
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+}
+.profile-card img {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    border: 3px solid #667eea;
+    box-shadow: 0 0 30px rgba(102, 126, 234, 0.4);
+    object-fit: cover;
+    flex-shrink: 0;
+}
+.profile-info h2 {
+    color: #fff;
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+}
+.profile-info .tagline {
+    color: #00ff88;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    font-family: 'JetBrains Mono', monospace;
+}
+.profile-info p {
+    color: #c9d1d9;
+    line-height: 1.7;
+}
+.section-card {
+    background: #161b22;
+    border: 1px solid #30363d;
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+}
+.section-card h3 {
+    color: #00ff88;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    font-family: 'JetBrains Mono', monospace;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 0.8rem;
+}
+.skill-tag {
+    background: #0d1117;
+    border: 1px solid #30363d;
+    border-radius: 8px;
+    padding: 0.8rem 1rem;
+    text-align: center;
+    color: #c9d1d9;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+.skill-tag:hover {
+    border-color: #667eea;
+    color: #fff;
+    transform: translateY(-2px);
+}
+.social-links {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-top: 1rem;
+}
+.social-links a {
+    background: #0d1117;
+    border: 1px solid #30363d;
+    border-radius: 8px;
+    padding: 0.8rem 1.2rem;
+    color: #c9d1d9;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+.social-links a:hover {
+    border-color: #667eea;
+    color: #fff;
+    background: #1e2a3a;
+}
+.social-links .icon {
+    font-size: 1.2rem;
+}
+.qoute-card {
+    background: linear-gradient(135deg, #1e2a3a 0%, #0d1117 100%);
+    border-left: 4px solid #667eea;
+    padding: 1.5rem;
+    margin: 2rem 0;
+    border-radius: 0 12px 12px 0;
+}
+.qoute-card p {
+    color: #c9d1d9;
+    font-size: 1.1rem;
+    font-style: italic;
+    margin: 0;
+}
+.qoute-card cite {
+    color: #667eea;
+    display: block;
+    margin-top: 0.8rem;
+    font-size: 0.9rem;
+}
+@media (max-width: 768px) {
+    .profile-card {
+        flex-direction: column;
+        text-align: center;
+    }
+    .about-header h1 {
+        font-size: 2rem;
+    }
+}
+</style>
+
+<div class="about-wrapper">
+    <div class="page-title">
+        <h1>About</h1>
+        <p>Who is behind the screen?</p>
+    </div>
+
+    <div class="profile-card">
+        <img src="{% static 'img/profile.jpg' %}" alt="cy613h">
+        <div class="profile-info">
+            <h2>cy613h</h2>
+            <p class="tagline">$ whoami → Cyber Security Analyst</p>
+            <p>
+                Cybersecurity analyst and independent security researcher focused on penetration testing, 
+                vulnerability disclosure, and raising awareness about digital security. This blog serves as 
+                my platform to share knowledge, document my learning, and connect with the security community.
+            </p>
+        </div>
+    </div>
+
+    <div class="qoute-card">
+        <p>"Blue Teamer by day. Red Teamer by night"</p>
+        <cite>— cy613h</cite>
+    </div>
+
+    <div class="section-card">
+        <h3>⚡ What I Do</h3>
+        <div class="skills-grid">
+            <div class="skill-tag">Penetration Testing</div>
+            <div class="skill-tag">Bug Bounty</div>
+            <div class="skill-tag">Code Review</div>
+            <div class="skill-tag">Security Research</div>
+        </div>
+    </div>
+
+    <div class="section-card">
+        <h3>🛠 Tools & Technologies</h3>
+        <div class="skills-grid">
+            <div class="skill-tag">Burp Suite</div>
+            <div class="skill-tag">Metasploit</div>
+            <div class="skill-tag">Nmap</div>
+            <div class="skill-tag">Wireshark</div>
+            <div class="skill-tag">SQLMap</div>
+            <div class="skill-tag">Ghidra</div>
+            <div class="skill-tag">Python</div>
+            <div class="skill-tag">Linux</div>
+        </div>
+    </div>
+
+    <div class="section-card">
+        <h3>🔗 Connect</h3>
+        <div class="social-links">
+            <a href="{% url 'blog:social' %}">
+                <span class="icon">🌐</span> Social Media
+            </a>
+            <a href="{% url 'blog:contact' %}">
+                <span class="icon">📧</span> Contact
+            </a>
+            <a href="mailto:cygieh001@gmail.com">
+                <span class="icon">📨</span> Email
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,211 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}cy613h | Social{% endblock %}
+
+{% block content %}
+<style>
+.social-page {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem 0;
+}
+
+.page-title {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.page-title h1 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 2.5rem;
+    background: var(--gradient-main);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.page-title p {
+    color: var(--text-muted);
+    font-size: 1rem;
+}
+
+.social-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.social-card {
+    background: var(--gradient-card);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 2rem;
+    text-decoration: none;
+    color: var(--text-secondary);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.social-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--gradient-main);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.social-card:hover {
+    transform: translateY(-8px);
+    border-color: var(--accent-primary);
+    box-shadow: 0 20px 40px rgba(0, 255, 136, 0.15);
+}
+
+.social-card:hover::before {
+    transform: scaleX(1);
+}
+
+.social-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    transition: all 0.3s ease;
+}
+
+.profile-img {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 2px solid var(--accent-primary);
+}
+
+.social-card:hover .social-icon {
+    transform: scale(1.1) rotate(5deg);
+    box-shadow: var(--glow-green);
+}
+
+/* Different colors for each platform - removed, using profile picture */
+
+.social-name {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.4rem;
+    color: var(--text-primary);
+    font-weight: 800;
+}
+
+.social-handle {
+    font-size: 1rem;
+    color: var(--text-muted);
+    font-weight: 600;
+}
+
+.social-description {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    text-align: center;
+    margin-top: 0.5rem;
+}
+
+/* Quick Contact Section */
+.quick-contact {
+    background: var(--gradient-card);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 2rem;
+    margin-top: 3rem;
+    text-align: center;
+}
+
+.quick-contact h2 {
+    color: var(--text-primary);
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+}
+
+.quick-contact p {
+    color: var(--text-muted);
+    margin-bottom: 1.5rem;
+}
+
+.contact-btn {
+    display: inline-block;
+    padding: 0.8rem 2rem;
+    background: var(--gradient-main);
+    color: var(--bg-primary);
+    border-radius: 8px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.contact-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--glow-green);
+}
+</style>
+
+<section class="social-page">
+    <div class="page-title">
+        <h1>Social</h1>
+        <p>Connect with me across the web</p>
+    </div>
+
+<div class="social-grid">
+        <a href="https://github.com/cy613h" target="_blank" class="social-card github">
+            <img src="{% static 'img/profile.jpg' %}" alt="cy613h" class="social-icon profile-img">
+            <span class="social-name">GitHub</span>
+            <span class="social-handle">@cy613h</span>
+            <span class="social-description">Code repositories & projects</span>
+        </a>
+
+        <a href="https://www.instagram.com/cy613h" target="_blank" class="social-card instagram">
+            <img src="{% static 'img/profile.jpg' %}" alt="cy613h" class="social-icon profile-img">
+            <span class="social-name">Instagram</span>
+            <span class="social-handle">@cy613h</span>
+            <span class="social-description">Behind the scenes</span>
+        </a>
+
+        <a href="https://www.tiktok.com/@cy613h" target="_blank" class="social-card tiktok">
+            <img src="{% static 'img/profile.jpg' %}" alt="cy613h" class="social-icon profile-img">
+            <span class="social-name">TikTok</span>
+            <span class="social-handle">@cy613h</span>
+            <span class="social-description">Short security content</span>
+        </a>
+
+        <a href="https://x.com/CYGIEH" target="_blank" class="social-card x">
+            <img src="{% static 'img/profile.jpg' %}" alt="cy613h" class="social-icon profile-img">
+            <span class="social-name">X (Twitter)</span>
+            <span class="social-handle">@CYGIEH</span>
+            <span class="social-description">Tech updates & thoughts</span>
+        </a>
+
+        <a href="mailto:cygieh001@gmail.com" class="social-card email">
+            <img src="{% static 'img/profile.jpg' %}" alt="cy613h" class="social-icon profile-img">
+            <span class="social-name">Email</span>
+            <span class="social-handle">cygieh001@gmail.com</span>
+            <span class="social-description">Direct contact</span>
+        </a>
+    </div>
+
+    <div class="quick-contact">
+        <h2>📬 Quick Connect</h2>
+        <p>Have a question, collaboration idea, or just want to say hi?<br>Fill out the contact form and I'll get back to you!</p>
+        <a href="{% url 'blog:contact' %}" class="contact-btn">Send Message</a>
+    </div>
+</section>
+{% endblock %}
