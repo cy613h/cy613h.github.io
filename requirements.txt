@@ -3,11 +3,10 @@ bleach==6.3.0
 Django==6.0.4
 django-jazzmin==3.0.4
 django-markdownify==0.9.6
+django-markdownx==4.0.9
 Markdown==3.10.2
+pillow==12.2.0
 sqlparse==0.5.5
 tinycss2==1.4.0
 tzdata==2026.1
 webencodings==0.5.1
-dj-database-url==2.1.0
-gunicorn==21.2.0
-whitenoise==6.6.0
