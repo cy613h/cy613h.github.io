@@ -1,12 +1,10 @@
 asgiref==3.11.1
-bleach==6.3.0
 Django==6.0.4
 django-jazzmin==3.0.4
-django-markdownify==0.9.6
 django-markdownx==4.0.9
+gunicorn==25.3.0
 Markdown==3.10.2
+packaging==26.1
 pillow==12.2.0
 sqlparse==0.5.5
-tinycss2==1.4.0
 tzdata==2026.1
-webencodings==0.5.1
