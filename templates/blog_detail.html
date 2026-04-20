@@ -18,8 +18,6 @@
         
         <div class="md-meta">
             <span>📅 {{ post.created_at|date:"F d, Y" }}</span>
-            <span>📄 ~500 words</span>
-            <span>⏱ 3 min read</span>
         </div>
         
         <div class="md-tags">
@@ -27,14 +25,7 @@
             <span class="md-tag">{{ tag.name }}</span>
             {% endfor %}
         </div>
-        
-        {% if post.image %}
-        <div class="md-image">
-            <img src="{{ post.image.url }}" alt="{{ post.title }}" />
-            <p class="image-caption">[{{ post.title }}]</p>
-        </div>
-        {% endif %}
-        
+
         <div class="md-content">
             {{ post.content|markdownify }}
         </div>
