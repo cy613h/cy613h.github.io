@@ -12,4 +12,5 @@ urlpatterns = [
     path('contact/', views.contact, name='contact'),
     path('social/', views.social, name='social'),
     path('report-phishing/', views.report_phishing, name='report_phishing'),
+    path('upload-inline-image/', views.upload_inline_image, name='upload_inline_image'),
 ]

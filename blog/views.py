@@ -4,7 +4,11 @@ from django.db.models import Q
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.core.mail import send_mail
 from django.conf import settings
+from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
 from .models import Post, Tag, Message
+import os
+import uuid
 
 
 def home(request):
@@ -111,3 +115,23 @@ def report_phishing(request):
         
         return render(request, 'report_phishing.html', {'success': True})
     return render(request, 'report_phishing.html')
+
+
+@csrf_exempt
+def upload_inline_image(request):
+    if request.method == 'POST' and request.FILES.get('image'):
+        image = request.FILES['image']
+        ext = os.path.splitext(image.name)[1].lower()
+        filename = f"{uuid.uuid4().hex}{ext}"
+        save_dir = settings.MEDIA_ROOT / 'blog' / 'inline'
+        save_dir.mkdir(parents=True, exist_ok=True)
+        save_path = save_dir / filename
+
+        with open(save_path, 'wb+') as dest:
+            for chunk in image.chunks():
+                dest.write(chunk)
+
+        url = f"{settings.MEDIA_URL}blog/inline/{filename}"
+        return JsonResponse({'url': url})
+
+    return JsonResponse({'error': 'Invalid request'}, status=400)
