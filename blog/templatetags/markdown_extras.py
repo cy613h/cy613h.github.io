@@ -11,7 +11,7 @@ def markdownify(content):
     if not content:
         return ''
     md = markdown.Markdown(
-        extensions=['extra', 'codehilite', 'fenced_code', 'tables', 'nl2br'],
+        extensions=['extra', 'codehilite', 'fenced_code', 'tables', 'nl2br', 'md_in_html'],
         extension_config={
             'codehilite_theme': 'monokai',
         }
